@@ -216,7 +216,7 @@ game.EnemyCreep = me.Entity.extend({
     update: function(delta){
         
         
-        this.body.vel.x -= this.accel.x * me.timer.tick;
+        this.body.vel.x -= this.body.accel.x * me.timer.tick;
         
         
         this.body.update(delta);
@@ -240,7 +240,8 @@ game.GameManager = Object.extend({
     update: function(){
         this.now = new Date().getTime();
         
-        if(Math.round(this.now/1000%10 ===0 && (this.now - this.lastCreep >= 1000))){
+        console.log(this.now-this.lastCreep);
+        if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastCreep >= 1000)){
                 this.lastCreep = this.now;
                 var creepe = me.pool.pull("EnemyCreep", 1000, 0, {});
                 me.game.world.addChild(creepe, 5);
