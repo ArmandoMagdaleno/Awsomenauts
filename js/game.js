@@ -28,6 +28,7 @@ var game = {
                 win: "",
                 pausePos: "",
                 buyscreen: "",
+                buytext: "",
                 
 	},
 	
