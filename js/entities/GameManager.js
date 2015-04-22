@@ -90,8 +90,9 @@ game.SpendGold = Object.extend({
            }else{
                this.stopBuying();
            }
-           
        }
+       
+       this.checkBuyKeys();
        
        return true;
    },
@@ -126,12 +127,12 @@ game.SpendGold = Object.extend({
             },
             draw: function(renderer) {
                 this.font.draw(renderer.getContext(), "PRESS F1-F4 TO BUY, B TO EXIT. Current Gold: " + game.data.gold, this.pos.x, this.pos.y);
-                this.font.draw(renderer.getContext(), "Skill 1: Increase Damage ", this.pos.x, this.pos.y+40);
-                this.font.draw(renderer.getContext(), "Skill 2: Run Faster ", this.pos.x, this.pos.y+80);
-                this.font.draw(renderer.getContext(), "Skill 3: Increase Health ", this.pos.x, this.pos.y+120);
-                this.font.draw(renderer.getContext(), "Q Ability: ", this.pos.x, this.pos.y+160);
-                this.font.draw(renderer.getContext(), "W Ability: ", this.pos.x, this.pos.y+200);
-                this.font.draw(renderer.getContext(), "E Ability: ", this.pos.x, this.pos.y+240);
+                this.font.draw(renderer.getContext(), "Skill 1: Increase Damage. Curent Level: " + game.data.skill1 + " Cost: " + ((game.data.skill1+1)*10), this.pos.x, this.pos.y+40);
+                this.font.draw(renderer.getContext(), "Skill 2: Run Faster! Current Level: " + game.data.skill2 + " Cost: " + ((game.data.skill2+1)*10), this.pos.x, this.pos.y+80);
+                this.font.draw(renderer.getContext(), "Skill 3: Increase Health. Current Level: " + game.data.skill3 + " Cost: " + ((game.data.skill3+1)*10), this.pos.x, this.pos.y+120);
+                this.font.draw(renderer.getContext(), "Q Ability: Speed Burst. Current Level: " + game.data.ability1 + " Cost: " + ((game.data.ability1+1)*10), this.pos.x, this.pos.y+160);
+                this.font.draw(renderer.getContext(), "W Ability: Eat Your Creep For Health: " + game.data.ability2 + " Cost: " + ((game.data.ability2+1)*10), this.pos.x, this.pos.y+200);
+                this.font.draw(renderer.getContext(), "E Ability: Throw Your Spear: " + game.data.ability3 + " Cost: " + ((game.data.ability3+1)*10), this.pos.x, this.pos.y+240);
             }
             
         }));
@@ -150,6 +151,56 @@ game.SpendGold = Object.extend({
        me.input.unbindKey(me.input.KEY.F5, "F5", true);
        me.input.unbindKey(me.input.KEY.F6, "F6", true);
        me.game.world.removeChild(game.data.buytext);
+   },
+   
+   checkBuyKeys: function(){
+      if(me.input.isKeyPresseed("F1")){
+          if(this.checkCost(1)){
+              this.makePurchase(1);
+          }
+      }else if(me.input.isKeyPresseed("F2")){
+          if(this.checkCost(2)){
+              this.makePurchase(2);
+          }
+      }else if(me.input.isKeyPresseed("F3")){
+          if(this.checkCost(3)){
+              this.makePurchase(3);
+          }
+      }else if(me.input.isKeyPresseed("F4")){
+          if(this.checkCost(4)){
+              this.makePurchase(4);
+          }
+      }else if(me.input.isKeyPresseed("F5")){
+          if(this.checkCost(5)){
+              this.makePurchase(5);
+          }
+      }else if(me.input.isKeyPresseed("F6")){
+          if(this.checkCost(6)){
+              this.makePurchase(6);
+          }
+      }
+   },
+   
+   checkCost: function(skill){
+       if(skill1===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
+          return true; 
+       }else if(skill1===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
+          return true; 
+       }else if(skill1===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
+          return true; 
+       }else if(skill1===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
+          return true; 
+       }else if(skill1===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
+          return true; 
+       }else if(skill1===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
+          return true; 
+       }else{
+           return false;
+       }
+   }, 
+   
+   makePurchase: function(skill){
+       
    }
    
 });
