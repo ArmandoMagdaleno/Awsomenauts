@@ -1,0 +1,50 @@
+
+div{
+    background: red;
+    border-style: double;
+    border-width: 3px;
+    border-color: white;
+    padding: 20px;
+}
+
+.container{
+    border-color: black;
+}
+
+.row{
+    border-color: pink;
+}    
+
+.list-group-item{
+    border: 0;
+    margin-top:5px;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
+body{
+    background: lightskyblue;
+}
+
+#projectsbody{
+    color: blue;
+}
+
+#techbody{
+    color: white;
+}
+
+#jumbo{
+    color: white;
+    background-color:red;
+}
+
+#lbj{
+    font-size:100px;
+    color:black;
+}
+
+#button{
+    background-color: maroon;
+    color: black;
+}
